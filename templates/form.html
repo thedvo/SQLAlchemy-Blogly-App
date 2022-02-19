@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+		{% block title %}Add User{% endblock %}
+	
+	{% block content%}
+		<h1>Create a User</h1>
+
+		<form action="/users/new" method="POST" class="row g-3">
+			<div class="col-md-6">
+				<label for="first" class="form-label">First Name: </label>
+				<input type="text" name="first_name" placeholder="Kevin" id="first" class="form-control"/>
+			</div>
+
+			<div class="col-md-6">
+				<label for="last" class="form-label">Last Name: </label>
+				<input type="text" name="last_name" placeholder="Durant" id="last" class="form-control" />
+			</div>
+
+			<div class="col-12">
+				<label for="url" class="form-label">Image URL: </label>
+				<input
+					type="text"
+					name="image_url"
+					placeholder="http://image.com/basketball.jpg"
+					id="url"
+					class="form-control"
+				/>
+			</div>
+			<div class="col-12">
+				<button role="button" class="btn btn-success mb-3">Add</button>
+			</div>
+		</form>
+		<a class="btn btn-outline-primary" href="/users" role="button">Cancel</a>
+	{% endblock %}
