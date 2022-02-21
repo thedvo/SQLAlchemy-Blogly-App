@@ -3,9 +3,11 @@
  {% block title %}Edit User {% endblock %}
 
 {% block content %}
+
+<div class="container">
     <h1>Edit a User</h1>
 
-	<form action="/users/{{user.id}}/edit" method="POST" class="row g-3">
+	<form action="/users/{{user.id}}/edit" method="POST" class="row g-3" autocomplete="off">
 		<div class="col-md-6">
 			<label for="first" class="form-label">First Name: </label>
 			<input type="text" name="first_name" value="{{ user.first_name}}" id="first" class="form-control" />
@@ -22,8 +24,9 @@
 						class="form-control" />
 		</div>
 		<div class="col-12">
-			<button role="button" class="btn btn-success mb-3">Save</button>
+			<button role="button" class="btn btn-success">Save</button>
+			<a class="btn btn-outline-primary" href="/users/{{user.id}}" role="button">Cancel</a>
 		</div>
 	</form>
-	<a class="btn btn-outline-primary" href="/users/{{user.id}}" role="button">Cancel</a>
+</div>
 {% endblock %}

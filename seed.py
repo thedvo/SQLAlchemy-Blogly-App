@@ -1,4 +1,4 @@
-from models import User, db
+from models import User, Post, db
 from app import app
 
 # Create all tables 
@@ -15,12 +15,40 @@ Lebron = User(first_name = 'Lebron', last_name = 'James', image_url='https://kin
 Stephen = User(first_name = 'Stephen', last_name = 'Curry', image_url='https://images.actionnetwork.com/1200x675/blog/2021/12/stephencurry-38.jpg')
 Kobe = User(first_name = 'Kobe', last_name = 'Bryant', image_url='https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/kys6wvk8dv9cakv6_1617458316.jpeg')
 
+# Add and commit Users
+db.session.add_all([Michael, Lebron, Stephen, Kobe])
 
-# Add new objects to session, so they'll persists
-db.session.add(Michael)
-db.session.add(Lebron)
-db.session.add(Stephen)
-db.session.add(Kobe)
-
-# Commit--otherwise, this never gets saved
 db.session.commit()
+
+
+#Add blog posts
+mike1 = Post(title = 'The Last Dance', content = "I'm the greatest basketball player of all time.", user_id = 1)
+mike2 = Post(title = '6 Rings', content = "I'm the greatest champion of all time.", user_id = 1)
+mike3 = Post(title = 'Jordan Brand', content = "I'm the greatest brand of all time.", user_id = 1)
+
+
+lebron1 = Post(title ='The Kid from Akron',content= "I'm the greatest basketball player of all time.", user_id = 2)
+lebron2 = Post(title ="I'm Back",content= "Coming home to Cleveland.", user_id = 2)
+lebron3 = Post(title ='The Big Three',content= "Dwyane Wade, Lebron James, Chris Bosh. One of the greatest trios of all time.", user_id = 2)
+
+
+stephen1 = Post(title ='I Changed the Game of Basketball', content = "I'm the greatest shooter of all time.", user_id = 3)
+stephen2 = Post(title ='Splash Brothers', content = "Steph Curry and Klay Thompson are the greatest backcourt duo of all time", user_id = 3)
+stephen3 = Post(title ='2017-2018 Warriors', content = "Greatest team ever assembled.", user_id = 3)
+
+
+kobe1 = Post(title ='Mamba Mentality', content = "I am a Laker for life.", user_id = 4)
+kobe2 = Post(title ='Dear Basketball', content = "I am a Laker for life.", user_id = 4)
+kobe3 = Post(title ='Kobe & Shaq', content = "Most dominant duo to ever the share the court", user_id = 4)
+
+
+
+# Add and commit blog posts
+db.session.add_all([mike1, mike2, mike3])
+db.session.add_all([lebron1, lebron2, lebron3])
+db.session.add_all([stephen1, stephen2, stephen3])
+db.session.add_all([kobe1, kobe2, kobe3])
+
+db.session.commit()
+
+

@@ -3,12 +3,13 @@
 		{% block title %}Add User{% endblock %}
 	
 	{% block content%}
+	<div class="container">
 		<h1>Create a User</h1>
 
 		<form action="/users/new" method="POST" class="row g-3">
 			<div class="col-md-6">
 				<label for="first" class="form-label">First Name: </label>
-				<input type="text" name="first_name" placeholder="Kevin" id="first" class="form-control"/>
+				<input type="text" name="first_name" placeholder="Kevin" id="first" class="form-control" />
 			</div>
 
 			<div class="col-md-6">
@@ -26,9 +27,11 @@
 					class="form-control"
 				/>
 			</div>
-			<div class="col-12">
-				<button role="button" class="btn btn-success mb-3">Add</button>
+
+			<div class="col-10">
+				<button role="button" class="btn btn-success">Add</button>
+				<a class="btn btn-outline-primary" href="/users" role="button">Cancel</a>
 			</div>
 		</form>
-		<a class="btn btn-outline-primary" href="/users" role="button">Cancel</a>
+	</div>
 	{% endblock %}
