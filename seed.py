@@ -1,13 +1,15 @@
-from models import User, Post, db
+from models import db ,User, Post, Tag, PostTag
 from app import app
 
 # Create all tables 
 db.drop_all()
 db.create_all()
 
-
 # If table isn't empty, empty it
+PostTag.query.delete()
 User.query.delete()
+Post.query.delete()
+Tag.query.delete()
 
 # Add users
 Michael = User(first_name = 'Michael', last_name = 'Jordan', image_url='https://static01.nyt.com/images/2020/04/20/sports/20lastdance-sopan-1/merlin_171693069_1a044fc4-ffa8-44af-95d0-6f9842de6577-mobileMasterAt3x.jpg')
@@ -41,8 +43,6 @@ kobe1 = Post(title ='Mamba Mentality', content = "I am a Laker for life.", user_
 kobe2 = Post(title ='Dear Basketball', content = "I am a Laker for life.", user_id = 4)
 kobe3 = Post(title ='Kobe & Shaq', content = "Most dominant duo to ever the share the court", user_id = 4)
 
-
-
 # Add and commit blog posts
 db.session.add_all([mike1, mike2, mike3])
 db.session.add_all([lebron1, lebron2, lebron3])
@@ -52,3 +52,31 @@ db.session.add_all([kobe1, kobe2, kobe3])
 db.session.commit()
 
 
+# Add Tags 
+sports = Tag(name = 'Sports')
+athlete = Tag(name = 'Athlete')
+amazing = Tag(name = 'Amazing')
+new = Tag(name = 'New')
+important = Tag(name = 'Important')
+fun = Tag(name = 'Fun')
+cool = Tag(name='Cool')
+
+
+# Add and commit tags
+db.session.add_all([sports, athlete, amazing, new, important, fun, cool])
+
+db.session.commit()
+
+
+# Add Post - Tag relationship
+pt1 = PostTag(post_id = 1 , tag_id = 1 )
+pt2 = PostTag(post_id = 1 , tag_id = 2 )
+pt3 = PostTag(post_id = 1 , tag_id = 3 )
+pt4 = PostTag(post_id = 2 , tag_id = 1 )
+pt5 = PostTag(post_id = 2 , tag_id = 2 )
+pt6 = PostTag(post_id = 3 , tag_id = 2 )
+
+# Add and commit post-tags
+db.session.add_all([pt1, pt2, pt3, pt4, pt5, pt6])
+
+db.session.commit()

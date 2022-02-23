@@ -3,24 +3,29 @@
 {% block title %} Edit Post {% endblock %}
 
 {% block content %}
-
-<div class="container">
-    <h1 class ="mb-4">Edit Post</h1>
-    <form action="" method="POST" autocomplete="off">
+    <h1 class ="mb-4">Edit Post for {{post.user.full_name}}</h1>
+    <form action="/posts/{{post.id}}/edit" method="POST" autocomplete="off">
         <div class="mb-3">
             <label class="form-label" for="post_title">Title </label>
-            <input class="form-control" type="text" name="post_title" id="post_title" value="{{post.title}}">
+            <input class="form-control" type="text" name="post_title" id="post_title" value="{{post.title}}" required>
         </div>
 
         <div class="mb-3">
             <label for="post_content" class="form-label">Content </label>
-            <textarea class="form-control" rows="3" name="post_content" id="post_content">{{post.content}}</textarea>
+            <textarea class="form-control" rows="3" name="post_content" id="post_content" required>{{post.content}}</textarea>
         </div>
 
+        <div class="mb-3">
+            <span for="tags" class="mb-2"><b>Select tags which apply to this post: </b></span><br>
+            {% for tag in tags %}
+            <input type="checkbox" name="tags" value="{{tag.id}}" {% if tag in post.tags_ %} checked {% endif %}> {{tag.name}}<br>
+            {% endfor %}
+        </div>
+
+
         <div>
-            <button class="btn btn-success">Save</button>
-            <a href="/posts/{{post.id}}" class="btn btn-outline-primary" role="button">Cancel</a>
+            <a href="/posts/{{post.id}}" class="btn btn-outline-primary btn-sm" role="button">Cancel</a>
+            <button class="btn btn-success btn-sm">Save</button>
         </div>
     </form>
-</div>
 {% endblock %}

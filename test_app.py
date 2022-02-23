@@ -49,7 +49,7 @@ class UserTest(TestCase):
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn('<h1>Nikola Jokic</h1>', html)
+            self.assertIn('Nikola Jokic', html)
             
 
     def test_create_user(self):
@@ -59,7 +59,7 @@ class UserTest(TestCase):
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn("<h1>Giannis Antetokounmpo</h1>", html)
+            self.assertIn("Giannis Antetokounmpo", html)
 
 
     def test_edit_route(self):

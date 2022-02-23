@@ -12,15 +12,15 @@
 			class="img-thumbnail"
 		/>
 		<div class="col-12 mt-3">
-			<a class="btn btn-outline-secondary" href="/users" role="button">Back to Users</a>
+			<a class="btn btn-outline-secondary btn-sm" href="/users" role="button">Users List</a>
 		</div>
 	</div>
 
 	<div class="col-4">
 		<h1><b>{{ user.full_name }}</b></h1>
 			<form action="/users/{{user.id}}/delete" method="POST">
-				<a href="/users/{{user.id}}/edit" class="btn btn-primary" role="button">Edit</a>
-				<button class="btn btn-danger" role="button">Delete</button>
+				<a href="/users/{{user.id}}/edit" class="btn btn-primary btn-sm" role="button">Edit</a>
+				<button class="btn btn-danger btn-sm" role="button">Delete</button>
 			</form>
 		
 			<div class="mt-4">
@@ -32,7 +32,7 @@
 				</ul>
 
 				<form action="/users/{{user.id}}/posts/new">
-					<button class="btn btn-primary">Add Post</button>
+					<button class="btn btn-primary btn-sm">Add Post</button>
 				</form>
 			</div>
 	</div>

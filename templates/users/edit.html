@@ -3,30 +3,27 @@
  {% block title %}Edit User {% endblock %}
 
 {% block content %}
-
-<div class="container">
-    <h1>Edit a User</h1>
+    <h1 class="mb-4">Edit User Profile for {{user.full_name}}</h1>
 
 	<form action="/users/{{user.id}}/edit" method="POST" class="row g-3" autocomplete="off">
 		<div class="col-md-6">
 			<label for="first" class="form-label">First Name: </label>
-			<input type="text" name="first_name" value="{{ user.first_name}}" id="first" class="form-control" />
+			<input type="text" name="first_name" value="{{ user.first_name}}" id="first" class="form-control" required />
 		</div>
 			
 		<div class="col-md-6">
 			<label for="last" class="form-label">Last Name: </label>
-			<input type="text" name="last_name" value="{{ user.last_name}}" id="last" class="form-control" />
+			<input type="text" name="last_name" value="{{ user.last_name}}" id="last" class="form-control" required/>
 		</div>
 			
 		<div class="col-12">
 			<label for="url" class="form-label">Image URL: </label>
-			<input type="text" name="image_url" value="{{ user.image_url }}" id="url"
-						class="form-control" />
+			<input type="text" name="image_url" value="{{ user.image_url }}" id="url" class="form-control" required/>
 		</div>
+
 		<div class="col-12">
-			<button role="button" class="btn btn-success">Save</button>
-			<a class="btn btn-outline-primary" href="/users/{{user.id}}" role="button">Cancel</a>
+			<a class="btn btn-outline-primary btn-sm" href="/users/{{user.id}}" role="button">Cancel</a>
+			<button role="button" class="btn btn-success btn-sm">Save</button>
 		</div>
 	</form>
-</div>
 {% endblock %}

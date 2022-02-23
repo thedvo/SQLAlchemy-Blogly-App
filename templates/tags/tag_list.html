@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %} Tags {% endblock %}
+
+{% block content %}
+<h1>Tags</h1>
+<p>Click on a tag to see related posts. </p>
+
+<ul>
+    {% for tag in tags %}
+    <li>
+        <a href="/tags/{{ tag.id }}" style="text-decoration: none;">{{ tag.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a class="btn btn-primary" href="/tags/new" role="button">Add Tag</a>
+<a class="btn btn-outline-primary" href="/users" role="button">Users List</a>
+
+{% endblock %}
